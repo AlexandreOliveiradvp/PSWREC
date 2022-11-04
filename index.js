@@ -3,6 +3,7 @@ import chalk from 'chalk'
 import inquirer from 'inquirer'
 import { openDb } from "./conectionDB.js"
 import sqlite3 from "sqlite3"
+import encrypt from './crypting.js'
 
 
 function startOptions() {
@@ -25,6 +26,7 @@ function startOptions() {
         } else {
             console.log(chalk.bgCyan("Obrigado por usar o PSWREC!"))
             process.exit()
+            /* console.log(encrypt('teste')) */
         }
     }).catch((err) => console.log(err))
 }
