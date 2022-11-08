@@ -1,6 +1,7 @@
 import { openDb } from "../services/conectionDB.js"
 import sqlite3 from "sqlite3"
 import startOptions from "./startOptions.js"
+import decrypt from "../services/decrypting.js";
 
 function showPasswords() {
     openDb();
@@ -17,6 +18,9 @@ function showPasswords() {
         if (rows.length == 0) {
             console.log(chalk.bgRed("Você ainda não possui senhas salvas."))
         } else {
+            for (let i = 0; i < rows.length; i++) {
+                rows[i].Password = decrypt(rows[i].Password)
+            }
             console.table(rows)
         }
     });

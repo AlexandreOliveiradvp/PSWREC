@@ -3,6 +3,7 @@ import { openDb } from "../services/conectionDB.js"
 import sqlite3 from "sqlite3"
 import chalk from 'chalk'
 import startOptions from "./startOptions.js"
+import encrypt from "../services/crypting.js"
 
 function editPassword() {
     let optionsRef = []
@@ -40,9 +41,10 @@ function editPassword() {
             ]).then((answers) => {
                 if (answers.passEdit === "") {
                     console.log(chalk.bgRed("Digite uma senha válida!"))
-                    editData()
+                    editPassword()
                 } else {
-                    sqlUpd = `UPDATE PASSWORDS set Password = '${answers.passEdit}' WHERE Reference ='${reference}';`
+                    let pswEncrypted = encrypt(answers.passEdit)
+                    sqlUpd = `UPDATE PASSWORDS set Password = '${pswEncrypted}' WHERE Reference ='${reference}';`
                     db.run(sqlUpd, [], (err) => {
                         if (err) {
                             throw err;
