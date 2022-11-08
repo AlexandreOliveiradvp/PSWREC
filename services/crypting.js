@@ -13,5 +13,5 @@ function encrypt(value) {
   encrypted = Buffer.concat([encrypted, cipher.final()])
   return `${iv.toString('hex')}:${encrypted.toString('hex')}`
 }
-export default encrypt;
+export default encrypt
 /* console.log(encrypt(psw)) */
