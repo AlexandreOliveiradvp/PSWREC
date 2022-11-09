@@ -1,7 +1,6 @@
 import crypto from 'crypto'
 
 const keySecret = "asdfqwerasdfqwerasdfqwerasdfqwer"
-
 function encrypt(value) {
   const iv = Buffer.from(crypto.randomBytes(16))
   const cipher = crypto.createCipheriv("aes-256-cbc", Buffer.from(keySecret), iv)

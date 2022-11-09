@@ -41,21 +41,21 @@ function prepareInsert() {
 
 function insertData(ref, psw) {
     let pswEncrypted = encrypt(psw)
-    openDb();
-    const sqlite = sqlite3.verbose();
+    openDb()
+    const sqlite = sqlite3.verbose()
 
-    // open the database
-    let db = new sqlite.Database('./pswrec.db');
-    let sql = `INSERT INTO PASSWORDS (Reference, Password) VALUES ('${ref}','${pswEncrypted}');`;
+    // open database
+    let db = new sqlite.Database('./pswrec.db')
+    let sql = `INSERT INTO PASSWORDS (Reference, Password) VALUES ('${ref}','${pswEncrypted}');`
 
     db.run(sql, [], (err) => {
         if (err) {
-            throw err;
+            throw err
         }
-    });
+    })
 
-    // close the database connection
-    db.close();
+    // close database connection
+    db.close()
     console.log(chalk.bgBlue("Dados salvos com sucesso!"))
     setTimeout(startOptions, 1000)
 }

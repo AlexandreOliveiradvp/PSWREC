@@ -9,7 +9,7 @@ function deletePassword() {
     openDb()
     const sqlite = sqlite3.verbose()
 
-    // open the database
+    // open database
     let db = new sqlite.Database('./pswrec.db')
     let sql = `SELECT Reference FROM PASSWORDS;`
     let sqlDel
@@ -33,16 +33,16 @@ function deletePassword() {
             sqlDel = `DELETE FROM PASSWORDS WHERE Reference='${answers.refDelete}';`
             db.run(sqlDel, [], (err) => {
                 if (err) {
-                    throw err;
+                    throw err
                 }
                 console.log(chalk.bgBlue("Dados apagados com sucesso!"))
 
-                // close the database connection
+                // close database connection
                 db.close()
                 setTimeout(startOptions, 1000)
-            });
+            })
         }).catch((err) => console.log(err))
-    });
+    })
 
 }
 

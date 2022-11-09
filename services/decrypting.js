@@ -1,7 +1,6 @@
 import crypto from 'crypto'
+
 const keySecret = "asdfqwerasdfqwerasdfqwerasdfqwer"
-
-
 function decrypt(value) {
   const [iv, encrypted ] = value.split(':')
   const ivBuffer = Buffer.from(iv, 'hex')

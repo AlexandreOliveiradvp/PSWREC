@@ -1,14 +1,14 @@
 import { openDb } from "../services/conectionDB.js"
 import sqlite3 from "sqlite3"
 import startOptions from "./startOptions.js"
-import decrypt from "../services/decrypting.js";
-import chalk from "chalk";
+import decrypt from "../services/decrypting.js"
+import chalk from "chalk"
 
 function showPasswords() {
-    openDb();
+    openDb()
     const sqlite = sqlite3.verbose()
 
-    // open the database
+    // open database
     let db = new sqlite.Database('./pswrec.db')
     let sql = `SELECT Reference, Password FROM PASSWORDS;`
 
@@ -24,9 +24,9 @@ function showPasswords() {
             }
             console.table(rows)
         }
-    });
+    })
 
-    // close the database connection
+    // close database connection
     db.close()
     setTimeout(startOptions, 1000)
 }

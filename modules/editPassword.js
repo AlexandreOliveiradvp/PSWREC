@@ -11,7 +11,7 @@ function editPassword() {
     openDb()
     const sqlite = sqlite3.verbose()
 
-    // open the database
+    // open database
     let db = new sqlite.Database('./pswrec.db')
     let sql = `SELECT Reference FROM PASSWORDS;`
     let sqlUpd
@@ -47,19 +47,19 @@ function editPassword() {
                     sqlUpd = `UPDATE PASSWORDS set Password = '${pswEncrypted}' WHERE Reference ='${reference}';`
                     db.run(sqlUpd, [], (err) => {
                         if (err) {
-                            throw err;
+                            throw err
                         }
                         console.log(chalk.bgBlue("Dados salvos com sucesso!"))
 
-                        // close the database connection
+                        // close database connection
                         db.close()
                         setTimeout(startOptions, 1000)
-                    });
+                    })
                 }
             }).catch((err) => console.log(err))
 
         }).catch((err) => console.log(err))
-    });
+    })
 }
 
 export default editPassword
