@@ -2,6 +2,7 @@ import { openDb } from "../services/conectionDB.js"
 import sqlite3 from "sqlite3"
 import startOptions from "./startOptions.js"
 import decrypt from "../services/decrypting.js";
+import chalk from "chalk";
 
 function showPasswords() {
     openDb();
