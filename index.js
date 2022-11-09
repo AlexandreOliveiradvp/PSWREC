@@ -1,13 +1,13 @@
-import presentation from './modules/presentation.js'
-import startOptions from './modules/startOptions.js'
-import * as fs from 'node:fs'
-import createDatabase from './services/creatingDb.js'
+import presentation from "./modules/presentation.js";
+import startOptions from "./modules/startOptions.js";
+import * as fs from "node:fs";
+import createDatabase from "./services/creatingDb.js";
 
-const checkBd = fs.existsSync('./pswrec.db')
+const checkBd = fs.existsSync("./pswrec.db");
 if (checkBd == false) {
-    createDatabase()
+  createDatabase();
 } else {
-    // Start System
-    presentation()
-    startOptions()
+  // Start System
+  presentation();
+  startOptions();
 }
