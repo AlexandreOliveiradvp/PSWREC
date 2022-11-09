@@ -1,4 +1,5 @@
 # PSWREC
+- PSWREC is a system to save passwords that runs in the terminal built in node.js that uses SQLITE as a database to store data.
 
 ## Dependencies
 - Node 18.4.0
