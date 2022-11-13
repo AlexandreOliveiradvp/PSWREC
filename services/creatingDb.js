@@ -9,7 +9,7 @@ function createDatabase() {
     }
     createDatabase(newdb);
     newdb.exec(
-      "CREATE TABLE PASSWORDS ( id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,Reference TEXT NOT NULL,Password TEXT NOT NULL)"
+      "CREATE TABLE PASSWORDS ( id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,Reference TEXT NOT NULL,User TEXT NOT NULL,Password TEXT NOT NULL)"
     );
     console.log(
       chalk.bgGreen(

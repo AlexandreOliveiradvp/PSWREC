@@ -10,7 +10,7 @@ function showPasswords() {
 
   // open database
   let db = new sqlite.Database("./pswrec.db");
-  let sql = `SELECT Reference, Password FROM PASSWORDS;`;
+  let sql = `SELECT Reference, User, Password FROM PASSWORDS;`;
 
   db.all(sql, [], (err, rows) => {
     if (err) {
