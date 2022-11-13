@@ -8,6 +8,7 @@ import encrypt from "../services/crypting.js";
 function prepareInsert() {
   // Reference and password variables
   let reference;
+  let user;
   let password;
   inquirer
     .prompt([
@@ -25,18 +26,28 @@ function prepareInsert() {
         inquirer
           .prompt([
             {
-              name: "recPsw",
-              message: "Digite a senha que deseja salvar.",
+              name: "recUser",
+              message: "Digite o usuário da senha que deseja salvar.",
             },
-          ])
-          .then((answers) => {
-            if (answers.recPsw === "") {
-              console.log(chalk.bgRed("Digite uma senha válida!"));
-              prepareInsert();
-            } else {
-              password = answers.recPsw;
-              insertData(reference, password);
-            }
+          ]).then((answers) => {
+            user = answers.recUser;
+            inquirer
+              .prompt([
+                {
+                  name: "recPsw",
+                  message: "Digite a senha que deseja salvar.",
+                },
+              ])
+              .then((answers) => {
+                if (answers.recPsw === "") {
+                  console.log(chalk.bgRed("Digite uma senha válida!"));
+                  prepareInsert();
+                } else {
+                  password = answers.recPsw;
+                  insertData(reference, user, password);
+                }
+              })
+              .catch((err) => console.log(err));
           })
           .catch((err) => console.log(err));
       }
@@ -44,14 +55,14 @@ function prepareInsert() {
     .catch((err) => console.log(err));
 }
 
-function insertData(ref, psw) {
+function insertData(ref, user, psw) {
   let pswEncrypted = encrypt(psw);
   openDb();
   const sqlite = sqlite3.verbose();
 
   // open database
   let db = new sqlite.Database("./pswrec.db");
-  let sql = `INSERT INTO PASSWORDS (Reference, Password) VALUES ('${ref}','${pswEncrypted}');`;
+  let sql = `INSERT INTO PASSWORDS (Reference, User, Password) VALUES ('${ref}','${user}','${pswEncrypted}');`;
 
   db.run(sql, [], (err) => {
     if (err) {
