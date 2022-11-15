@@ -1,4 +1,4 @@
-<center>![image](https://user-images.githubusercontent.com/85629545/201949800-c1fd1050-810d-41ba-85f6-3c573109070c.png)</center>
+![image](https://user-images.githubusercontent.com/85629545/201949800-c1fd1050-810d-41ba-85f6-3c573109070c.png)
 
 # PSWREC
 
